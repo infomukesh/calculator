@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        td{
+            text-align: center;
+        }
+
+        button{
+            width: 70px;
+            height: 40px;
+        }
+
+        textarea{
+            height: 79px; width: 509px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+
+        <textarea id="area"></textarea>
+        <tr>
+            <td><button onclick="keyPressed('Rad')">Rad</button></td>
+            <td><button onclick="keyPressed('Deg')">Deg</button></td>
+            <td><button onclick="keyPressed('x!')">x!</button></td>
+            <td><button onclick="keyPressed('(')">(</button></td>
+            <td><button onclick="keyPressed(')')">)</button></td>
+            <td><button onclick="keyPressed('%')">%</button></td>
+            <td><button onclick="clearArea()">CE</button></td> 
+        </tr>
+
+        <tr>
+            <td><button onclick="keyPressed('Inv')">Inv</button></td>
+            <td><button onclick="keyPressed('sin')">sin</button></td>
+            <td><button onclick="keyPressed('In')">In</button></td>
+            <td><button onclick="keyPressed('7')">7</button></td>
+            <td><button onclick="keyPressed('8')">8</button></td>
+            <td><button onclick="keyPressed('9')">9</button></td>
+            <td><button onclick="keyPressed('/')">/</button></td>
+        </tr>
+
+        <tr>
+            <td><button onclick="keyPressed('&pi;')">&pi;</button></td>
+            <td><button onclick="keyPressed('cos')">cos</button></td>
+            <td><button onclick="keyPressed('log')">log</button></td>
+            <td><button onclick="keyPressed('4')">4</button></td>
+            <td><button onclick="keyPressed('5')">5</button></td>
+            <td><button onclick="keyPressed('6')">6</button></td>
+            <td><button onclick="keyPressed('*')">*</td>
+        <tr>
+            <td><button onclick="keyPressed('e')">e</button></td>
+            <td><button onclick="keyPressed('tan')">tan</button></td>
+            <td><button onclick="keyPressed('&square;')">&square;</button></td>
+            <td><button onclick="keyPressed('1')">1</button></td>
+            <td><button onclick="keyPressed('2')">2</button></td>
+            <td><button onclick="keyPressed('3')">3</button></td>
+            <td><button onclick="keyPressed('-')">-</button></td>
+        </tr>
+
+        <tr>
+            <td><button onclick="keyPressed('Ans')">Ans</button></td>
+            <td><button onclick="keyPressed('EXP')">EXP</button></td>
+            <td><button onclick="keyPressed('x&square;y')">x<sup>y</sup></button></td>
+            <td><button onclick="keyPressed('0')">0</button></td>
+            <td><button onclick="keyPressed('.')">.</button></td>
+            <td><button onclick="evaluateExp()">=</button></td>
+            <td><button onclick="keyPressed('+')">+</button></td>
+        </tr>
+    </table>
+
+    <script>
+        let string = '';
+        function keyPressed(key) {
+            string += key;
+            document.getElementById("area").value = string;
+        }
+
+        function evaluateExp() {
+            try {
+                let val = eval(string);
+                string = '';
+                document.getElementById("area").value = val;
+            } catch {
+                document.getElementById("area").value = "Error";
+            }
+
+        }
+        
+        function clearArea() {
+            document.getElementById("area").value = '';
+            string = '';
+        }
+    </script>
+</body>
+</html>
